@@ -1,0 +1,28 @@
+{% extends 'contractorbase.html' %}
+{% block title %}
+Add Progress
+{% endblock %}
+{% block contractor %}
+<h3 class="text-light">Progress Update for <span class="text-primary">{{ project.projectname }}</span></h3>
+<form method="post" enctype="multipart/form-data" class="w-75 mx-auto">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="ut" class="form-label text-light">Update Text</label>
+        <textarea class="form-control" id="ut" name="update_text" placeholder="Enter your text update" required></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="f" class="form-label text-light">Upload File</label>
+        <input type="file" class="form-control" id="f" name="image" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="d" class="form-label text-light">Progress (in percentage)</label>
+        <input type="number" class="form-control" id="d" name="progress_percent"
+            value="{{project.progress}}" required><span id="z" class="text-danger"></span>
+    </div>
+
+    <div class="text-center">
+        <button type="submit" class="btn btn-success mx-auto w-50">Submit</button>
+    </div>
+</form>
+{% endblock %}

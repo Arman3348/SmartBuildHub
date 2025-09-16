@@ -1,0 +1,48 @@
+{% extends 'contractorbase.html' %}
+{% block title %}
+Contractor Applications
+{% endblock %}
+{% block contractor %}
+<h2 class="text-light">Your Applications</h2>
+<table class="table table-bordered table-striped">
+    <tr>
+        <th class="text-light">S. No</th>
+        <th class="text-light">Project Name</th>
+        <th class="text-light">Homeowner Name</th>
+        <th class="text-light">Design</th>
+        <th class="text-light">Estimated Budget</th>
+        <th class="text-light">Estimated Duration</th>
+        <th class="text-light">Status</th>
+        <th class="text-light">Submitted At</th>
+    </tr>
+    {% for a in applications %}
+    <tr>
+        <td class="text-light">{{ forloop.counter }}</td>
+        <td class="text-light">{{ a.project.projectname }}</td>
+        <td class="text-light">{{ a.project.homeowner.name }}</td>
+        <td class="text-light">
+            {% if a.design_file %}
+                <a href="{{ a.design_file.url }}" class="btn btn-success" target="_blank">View Design</a>
+            {% else %}
+                No Design File
+            {% endif %}
+        </td>
+        <td class="text-light">{{ a.estimated_budget }}</td>
+        <td class="text-light">{{ a.estimated_duration }} In days</td>
+        <td>
+            {% if a.status == 'pending' %}
+            <span class="btn btn-warning btn-sm">Pending</span>
+            {% elif a.status == 'approved' %}
+            <span class="btn btn-success btn-sm">Approved</span>
+            {% elif a.status == 'rejected' %}
+            <span class="btn btn-danger btn-sm">Rejected</span>
+            {% else %}
+            {{a.status}}
+            {% endif %}
+        </td>
+        <td class="text-light">{{ a.submitted_at }}</td>
+
+    </tr>
+    {% endfor %}
+    </table>
+    {% endblock %}

@@ -1,0 +1,262 @@
+{% extends 'contractorbase.html' %}
+{% load static %}
+{% block contractor %}
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <h1 class="text-white mb-2">Edit Profile</h1>
+            <p class="text-white mb-4">Update your personal information below</p>
+
+            <div class="card shadow-lg"
+                style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: none;">
+                <div class="card-body p-4">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <!-- Profile Picture Section -->
+                        <div class="row mb-4">
+                            <div class="col-md-12 text-center">
+                                <div class="profile-picture-container">
+                                    {% if profile %}
+                                    <img src="{{ profile.url }}" alt="Profile Picture" class="rounded-circle img-fluid"
+                                        style="width: 120px; height: 120px; object-fit: cover; border: 3px solid #fff;">
+                                    {% else %}
+                                    <div class="rounded-circle mx-auto d-flex align-items-center justify-content-center"
+                                        style="width: 120px; height: 120px; background-color: #6c757d; border: 3px solid #fff;">
+                                        <i class="fas fa-user fa-3x text-white"></i>
+                                    </div>
+                                    {% endif %}
+                                    <div class="mb-3">
+                                        <label for="profile" class="form-label text-white">Profile Picture</label>
+                                        <input type="file" class="form-control" id="profile" name="profile"
+                                            accept="image/*" onchange="previewImage(this)">
+                                        <small class="text-muted">Choose a new profile picture (JPG, PNG, GIF)</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Personal Information -->
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="name" class="form-label text-white">
+                                    <i class="fas fa-user me-2"></i>Full Name
+                                </label>
+                                <input type="text" class="form-control" id="name" name="name" value="{{ name }}"
+                                    placeholder="Enter your full name" required>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="email" class="form-label text-white">
+                                    <i class="fas fa-envelope me-2"></i>Email Address
+                                </label>
+                                <input type="email" class="form-control" id="email" name="email" value="{{ email }}"
+                                    placeholder="Enter your email" readonly>
+                                <small class="text-muted">Email cannot be changed</small>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="phone" class="form-label text-white">
+                                    <i class="fas fa-phone me-2"></i>Phone Number
+                                </label>
+                                <input type="tel" class="form-control" id="phone" name="phone" value="{{ contact }}"
+                                    placeholder="Enter your phone number">
+                            </div>
+
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <label for="address" class="form-label text-white">
+                                    <i class="fas fa-map-marker-alt me-2"></i>Address
+                                </label>
+                                <textarea class="form-control" id="address" name="address" rows="3"
+                                    placeholder="Enter your complete address">{{ address }}</textarea>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <label for="bio" class="form-label text-white">
+                                    <i class="fas fa-info-circle me-2"></i>Bio
+                                </label>
+                                <textarea class="form-control" id="bio" name="bio" rows="4"
+                                    placeholder="Tell us about yourself...">{{ bio }}</textarea>
+                                <small class="text-muted">Maximum 500 characters</small>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <button type="submit" class="btn btn-success btn-lg me-3">
+                                    <i class="fas fa-save me-2"></i>Save Changes
+                                </button>
+                                <a href="{% url 'contractorprofile' %}" class="btn btn-secondary btn-lg">
+                                    <i class="fas fa-times me-2"></i>Cancel
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .form-control {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #fff;
+        border-radius: 8px;
+        padding: 12px 15px;
+    }
+
+    .form-control:focus {
+        background: rgba(255, 255, 255, 0.15);
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25);
+        color: #fff;
+    }
+
+    .form-control::placeholder {
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    .form-control[readonly] {
+        background: rgba(255, 255, 255, 0.05);
+        border-color: rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .btn-success {
+        background: linear-gradient(45deg, #10b981, #059669);
+        border: none;
+        border-radius: 8px;
+        padding: 12px 30px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .btn-success:hover {
+        background: linear-gradient(45deg, #059669, #047857);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    }
+
+    .btn-secondary {
+        background: rgba(108, 117, 125, 0.8);
+        border: none;
+        border-radius: 8px;
+        padding: 12px 30px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+        background: rgba(108, 117, 125, 1);
+        transform: translateY(-2px);
+    }
+
+    .card {
+        transition: transform 0.3s ease;
+        border-radius: 15px;
+    }
+
+    .profile-picture-container {
+        position: relative;
+    }
+
+    #profile-preview {
+        transition: all 0.3s ease;
+    }
+
+    .form-label {
+        font-weight: 600;
+        margin-bottom: 8px;
+    }
+
+    .text-muted {
+        color: rgba(255, 255, 255, 0.6) !important;
+    }
+</style>
+
+<script>
+    function previewImage(input) {
+        const preview = document.getElementById('profile-preview');
+        const file = input.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                if (preview.tagName === 'IMG') {
+                    preview.src = e.target.result;
+                } else {
+                    // Replace the div with an img element
+                    const newImg = document.createElement('img');
+                    newImg.id = 'profile-preview';
+                    newImg.src = e.target.result;
+                    newImg.alt = 'Profile Picture';
+                    newImg.className = 'rounded-circle img-fluid mb-3';
+                    newImg.style.width = '150px';
+                    newImg.style.height = '150px';
+                    newImg.style.objectFit = 'cover';
+                    newImg.style.border = '4px solid #fff';
+                    preview.parentNode.replaceChild(newImg, preview);
+                }
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+
+    // Form validation
+    document.querySelector('form').addEventListener('submit', function (e) {
+        const name = document.getElementById('name').value.trim();
+        const bio = document.getElementById('bio').value.trim();
+
+        if (!name) {
+            e.preventDefault();
+            alert('Please enter your full name.');
+            document.getElementById('name').focus();
+            return;
+        }
+
+        if (bio.length > 500) {
+            e.preventDefault();
+            alert('Bio must be 500 characters or less.');
+            document.getElementById('bio').focus();
+            return;
+        }
+    });
+
+    // Character counter for bio
+    document.getElementById('bio').addEventListener('input', function () {
+        const maxLength = 500;
+        const currentLength = this.value.length;
+        const remaining = maxLength - currentLength;
+
+        let counterElement = document.getElementById('bio-counter');
+        if (!counterElement) {
+            counterElement = document.createElement('small');
+            counterElement.id = 'bio-counter';
+            counterElement.className = 'text-muted';
+            this.parentNode.appendChild(counterElement);
+        }
+
+        counterElement.textContent = `${remaining} characters remaining`;
+
+        if (remaining < 0) {
+            counterElement.style.color = '#ef4444';
+        } else if (remaining < 50) {
+            counterElement.style.color = '#f59e0b';
+        } else {
+            counterElement.style.color = 'rgba(255, 255, 255, 0.6)';
+        }
+    });
+</script>
+
+{% endblock %}

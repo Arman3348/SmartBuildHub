@@ -1,0 +1,105 @@
+{% extends 'homeownerbase.html' %}
+{% load static %}
+{% block homeowner %}
+<h1 class="pc-title text-white">Homeowner Profile</h1>
+<p class="text-white">Welcome to your profile page, where you can view and edit your personal information.</p>
+<!-- Additional content can be added here -->
+<div class="row">
+    <div class="col-sm-6 mx-auto">
+        <div class="card shadow-lg" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: none;">
+            <div class="card-body">
+                <h5 class="card-title text-center text-white mb-4">Profile Information</h5>
+                
+                <!-- Profile Picture -->
+                <div class="text-center mb-4">
+                    {% if profile %}
+                        <img src="{{ profile.url }}" alt="Profile Picture" 
+                             class="rounded-circle img-fluid" 
+                             style="width: 120px; height: 120px; object-fit: cover; border: 3px solid #fff;">
+                    {% else %}
+                        <div class="rounded-circle mx-auto d-flex align-items-center justify-content-center" 
+                             style="width: 120px; height: 120px; background-color: #6c757d; border: 3px solid #fff;">
+                            <i class="fas fa-user fa-3x text-white"></i>
+                        </div>
+                    {% endif %}
+                </div>
+                
+                <!-- Profile Information -->
+                <div class="profile-info">
+                    <div class="row mb-3">
+                        <div class="col-4">
+                            <strong class="text-white">Name:</strong>
+                        </div>
+                        <div class="col-8">
+                            <span class="text-white">{{ name }}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-4">
+                            <strong class="text-white">Phone:</strong>
+                        </div>
+                        <div class="col-8">
+                            <span class="text-white">{{ contact }}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-4">
+                            <strong class="text-white">Email:</strong>
+                        </div>
+                        <div class="col-8">
+                            <span class="text-white">{{ email }}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-4">
+                            <strong class="text-white">Address:</strong>
+                        </div>
+                        <div class="col-8">
+                            <span class="text-white">{{ address }}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-4">
+                            <strong class="text-white">Bio:</strong>
+                        </div>
+                        <div class="col-8">
+                            <span class="text-white">{{ bio }}</span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="card-footer text-center" style="background: rgba(255, 255, 255, 0.1); border: none;">
+                <a href="{% url 'homeowneredit' %}" class="btn btn-primary btn-lg">
+                    <i class="fas fa-edit me-2"></i>Edit Profile
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.profile-info .row {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 10px 0;
+}
+
+.profile-info .row:last-child {
+    border-bottom: none;
+}
+
+.card {
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+</style>
+
+{% endblock %}

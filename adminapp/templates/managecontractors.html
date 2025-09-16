@@ -1,0 +1,52 @@
+{% extends 'adminbase.html' %}
+{% block admin %}
+
+<div class="container mt-4">
+    <h3 class="text-light">Manage Contractors</h3>
+    <table class="table table-bordered table-striped" style="color: white !important;">
+        <thead style="background-color: #2c3e50; color: white !important;">
+            <tr>
+                <th style="color: white !important;">S.no</th>
+                <th style="color: white !important;">Profile</th>
+                <th style="color: white !important;">Name</th>
+                <th style="color: white !important;">Contact No</th>
+                <th style="color: white !important;">Email</th>
+                <th style="color: white !important;">Password</th>
+                <th style="color: white !important;">Address</th>
+                <th style="color: white !important;">Actions</th>
+            </tr>
+        </thead>
+        <tbody style="background-color: #34495e;">
+            {% for enq in contractors %}
+            <tr style="color: white !important;">
+                <td style="color: white !important;">{{ forloop.counter }}</td>
+                <td>
+                    {% if enq.picture %}
+                    <img src="{{enq.picture.url}}" alt="" height="50px"width="50px" class="rounded-circle">
+                    {% else %}
+                    No Profile
+                    {% endif %}
+                    
+                </td>
+                <td style="color: white !important;">{{ enq.name }}</td>
+                <td style="color: white !important;">{{ enq.mobile }}</td>
+                <td style="color: white !important;">{{ enq.email }}</td>
+                <td style="color: white !important;">{{ enq.password }}</td>
+                <td style="color: white !important;">{{ enq.address }}</td>
+                <td>
+                    <form method="post" action="{% url 'admin_delete_enquiry' enq.id %}" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger btn-sm"
+                            onclick="return confirm('Block this user?');">Block</button>
+                    </form>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="8" style="color: white !important; text-align: center;">No enquiries found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

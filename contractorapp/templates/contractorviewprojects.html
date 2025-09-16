@@ -1,0 +1,60 @@
+{% extends 'contractorbase.html' %}
+{% block contractor %}
+<h1 class="text-white">New Projects</h1>
+<div class="table-responsive">
+    <table class="table table-bordered table-stripped">
+        <tr>
+            <th class="text-light">S. No</th>
+            <th class="text-light">Project Name</th>
+            <th class="text-light">Duration(Days)</th>
+            <th class="text-light">Budget</th>
+            <th class="text-light">Location</th>
+            <th class="text-light">Homeowner</th>
+            <th class="text-light">Status</th>
+            <th class="text-light">Plot Size</th>
+            <th class="text-light">House type</th>
+            <th class="text-light">No. Of Floors</th>
+            <th class="text-light">Basement</th>
+            <th class="text-light">Parking</th>
+            <th class="text-light">Bedrooms</th>
+            <th class="text-light">Bathrooms</th>
+            <th class="text-light">Kitchen on Each Floors</th>
+            <th class="text-light">Additional Rooms</th>
+            <th class="text-light">Outdoor Areas</th>
+            <th class="text-light">Design Reference</th>
+            <th class="text-light">Action</th>
+        </tr>
+        {% for project in Projects %}
+        <tr>
+            <td class="text-light">{{ forloop.counter }}</td>
+            <td class="text-light">{{ project.projectname }}</td>
+            <td class="text-light">{{ project.duration }} Days</td>
+            <td class="text-light">{{ project.budget }}</td>
+            <td class="text-light">{{ project.location }}</td>
+            <td class="text-light">
+                {% if project.homeowner.picture.url %}
+                <img src="{{ project.homeowner.picture.url }}" class="rounded-circle" width="70" height="70">
+                {% endif %}
+                {{ project.homeowner.name }}
+                {{ project.homeowner.mobile }}
+            </td>
+            <td class="text-light">{{ project.status }}</td>
+            <td class="text-light">{{ project.plot_size }}</td>
+            <td class="text-light">{{ project.house_type }}</td>
+            <td class="text-light">{{ project.num_floors }}</td>
+            <td class="text-light">{{ project.basement }}</td>
+            <td class="text-light">{{ project.parking_required }}</td>
+            <td class="text-light">{{ project.bedrooms }}</td>
+            <td class="text-light">{{ project.bathrooms }}</td>
+            <td class="text-light">{{ project.kitchen_each_floor }}</td>
+            <td class="text-light">{{ project.additional_rooms }}</td>
+            <td class="text-light">{{ project.outdoor_areas }}</td>
+            <td class="text-light"><a href="{{ project.design_reference }}">View Design</a></td>
+            <td class="text-light">
+                <a href="{% url 'applyproject' id=project.id %}" class="btn btn-primary">Apply</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

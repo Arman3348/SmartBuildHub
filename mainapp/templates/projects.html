@@ -1,0 +1,363 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Projects
+{% endblock %}
+
+{% block activeP %}
+active
+{% endblock %}
+
+{% block main %}
+
+<!-- Animated Background -->
+<div class="animated-bg">
+    <div class="bg-particle"></div>
+    <div class="bg-particle"></div>
+    <div class="bg-particle"></div>
+    <div class="bg-particle"></div>
+    <div class="bg-particle"></div>
+</div>
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title">SmartBuildHub Projects</h1>
+            <p class="hero-subtitle">Transforming Visions Into Intelligent Realities</p>
+            <p class="hero-description">
+                Discover our portfolio of cutting-edge smart building projects that revolutionize how we live, work, and
+                interact with our built environment. Each project showcases our commitment to sustainability,
+                innovation, and technological excellence.
+            </p>
+            <a href="#projects" class="cta-button">Explore Our Work</a>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section class="projects-section" id="projects">
+    <div class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-description">
+            From smart residential complexes to intelligent commercial buildings, our projects set new standards in
+            construction technology and sustainable design.
+        </p>
+
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image"
+                    style="background-image: url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">EcoTower Smart Complex</h3>
+                    <p class="project-description">
+                        A 40-story intelligent residential tower featuring AI-powered energy management, automated
+                        climate control, and integrated IoT systems. Achieved 95% energy efficiency compared to
+                        traditional buildings.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">Smart Home</span>
+                        <span class="project-tag">IoT Integration</span>
+                        <span class="project-tag">Energy Efficient</span>
+                    </div>
+                    <a href="#" class="project-link">View Project Details</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image"
+                    style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">NextGen Office Hub</h3>
+                    <p class="project-description">
+                        Revolutionary workspace with adaptive lighting, smart air quality management, and predictive
+                        maintenance systems. Features biometric access and AI-driven space optimization.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">Commercial</span>
+                        <span class="project-tag">AI Systems</span>
+                        <span class="project-tag">Biometric Security</span>
+                    </div>
+                    <a href="#" class="project-link">View Project Details</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image"
+                    style="background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">GreenVille Community</h3>
+                    <p class="project-description">
+                        Sustainable smart community with 200 eco-friendly homes, community-wide energy sharing, and
+                        intelligent waste management. First carbon-neutral residential development in the region.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">Sustainable</span>
+                        <span class="project-tag">Community</span>
+                        <span class="project-tag">Carbon Neutral</span>
+                    </div>
+                    <a href="#" class="project-link">View Project Details</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image"
+                    style="background-image: url('https://images.unsplash.com/photo-1582407947304-fd86f028f716?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">MediSmart Hospital</h3>
+                    <p class="project-description">
+                        State-of-the-art medical facility with smart patient monitoring, automated medication
+                        dispensing, and AI-assisted diagnostics infrastructure. Improved patient outcomes by 40%.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">Healthcare</span>
+                        <span class="project-tag">AI Diagnostics</span>
+                        <span class="project-tag">Patient Care</span>
+                    </div>
+                    <a href="#" class="project-link">View Project Details</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image"
+                    style="background-image: url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">SmartMall Retail Center</h3>
+                    <p class="project-description">
+                        Interactive shopping experience with smart navigation, personalized recommendations, and
+                        automated inventory management. Features digital twin technology for optimal space utilization.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">Retail</span>
+                        <span class="project-tag">Digital Twin</span>
+                        <span class="project-tag">Customer Experience</span>
+                    </div>
+                    <a href="#" class="project-link">View Project Details</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image"
+                    style="background-image: url('https://images.unsplash.com/photo-1611895491442-65c7e5dde8e8?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">EduSmart Campus</h3>
+                    <p class="project-description">
+                        Intelligent educational facility with adaptive learning environments, smart attendance tracking,
+                        and energy-efficient HVAC systems. Enhanced learning outcomes through technology integration.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">Education</span>
+                        <span class="project-tag">Adaptive Learning</span>
+                        <span class="project-tag">Smart HVAC</span>
+                    </div>
+                    <a href="#" class="project-link">View Project Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Statistics Section -->
+<section class="stats-section">
+    <div class="container">
+        <h2 class="section-title">Our Impact</h2>
+        <p class="section-description">Numbers that showcase our commitment to excellence and innovation</p>
+
+        <div class="row justify-content-center g-4">
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="stat-item stat-box fade-in text-center p-4 h-100">
+                    <span class="stat-number d-block mb-2">150+</span>
+                    <span class="stat-label">Smart Buildings Delivered</span>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="stat-item stat-box fade-in text-center p-4 h-100">
+                    <span class="stat-number d-block mb-2">85%</span>
+                    <span class="stat-label">Average Energy Savings</span>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="stat-item stat-box fade-in text-center p-4 h-100">
+                    <span class="stat-number d-block mb-2">50M+</span>
+                    <span class="stat-label">Square Feet Constructed</span>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="stat-item stat-box fade-in text-center p-4 h-100">
+                    <span class="stat-number d-block mb-2">99.9%</span>
+                    <span class="stat-label">Client Satisfaction Rate</span>
+                </div>
+            </div>
+        </div>
+<style>
+.stat-box {
+    background: #23272b;
+    border-radius: 20px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+    border: 1px solid #2c3136;
+    color: #e0e0e0;
+    transition: box-shadow 0.3s, transform 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 170px;
+    margin-bottom: 0;
+    position: relative;
+    overflow: hidden;
+}
+.stat-box:hover {
+    box-shadow: 0 8px 32px rgba(0,180,216,0.18);
+    transform: translateY(-8px) scale(1.03);
+}
+.stat-number {
+    font-size: 2.7rem;
+    font-weight: 700;
+    color: #00b4d8;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+}
+.stat-label {
+    color: #b0b0b0;
+    font-size: 1.08rem;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+@media (max-width: 991px) {
+    .stat-box {
+        min-height: 120px;
+        padding: 1.5rem 0.5rem;
+    }
+    .stat-number {
+        font-size: 2rem;
+    }
+}
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+</style>
+    </div>
+</section>
+
+<!-- Testimonial Section -->
+<section class="testimonial-section">
+    <div class="container">
+        <h2 class="section-title text-center" style="margin-top: 20px; margin-bottom: 10px;">What Our Clients Say</h2>
+
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6">
+                <div class="testimonial-card card text-center p-4 mx-auto mt-4 mb-4" style="background: #23272b; border-radius: 20px; box-shadow: 0 4px 24px rgba(0,0,0,0.10); border: 1px solid #2c3136; color: #e0e0e0;">
+                    <p class="testimonial-text mb-3" style="font-size:1.2rem; color:#e0e0e0; font-style:italic;">
+                        "SmartBuildHub transformed our vision into a reality that exceeded all expectations. Their innovative
+                        approach to smart building technology has revolutionized how our tenants interact with their living
+                        spaces. The energy savings alone have been remarkable."
+                    </p>
+                    <div class="testimonial-author fw-bold" style="color:#00b4d8;">Sarah Chen</div>
+                    <div class="testimonial-position" style="color:#b0b0b0; font-size:1rem;">CEO, Metropolitan Properties</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+
+    // Counter animation for statistics
+    function animateCounter(element, target) {
+        let current = 0;
+        const increment = target / 100;
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                current = target;
+                clearInterval(timer);
+            }
+
+            if (target >= 1000000) {
+                element.textContent = (current / 1000000).toFixed(1) + 'M+';
+            } else if (target >= 1000) {
+                element.textContent = (current / 1000).toFixed(0) + 'K+';
+            } else if (target < 100) {
+                element.textContent = current.toFixed(1) + '%';
+            } else {
+                element.textContent = Math.floor(current) + '+';
+            }
+        }, 20);
+    }
+
+    // Initialize animations when DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+        // Observe all animated elements
+        const animatedElements = document.querySelectorAll('.section-title, .section-description, .project-card, .stat-item, .testimonial-card');
+        animatedElements.forEach(el => observer.observe(el));
+
+        // Animate counters when stats section becomes visible
+        const statItems = document.querySelectorAll('.stat-item');
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumber = entry.target.querySelector('.stat-number');
+                    const text = statNumber.textContent;
+                    let target;
+
+                    if (text.includes('M+')) {
+                        target = parseFloat(text) * 1000000;
+                    } else if (text.includes('K+')) {
+                        target = parseFloat(text) * 1000;
+                    } else if (text.includes('%')) {
+                        target = parseFloat(text);
+                    } else {
+                        target = parseInt(text);
+                    }
+
+                    animateCounter(statNumber, target);
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        statItems.forEach(item => statsObserver.observe(item));
+
+        // Add staggered animation delays to project cards
+        const projectCards = document.querySelectorAll('.project-card');
+        projectCards.forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.1}s`;
+        });
+
+        // Smooth scrolling for CTA button
+        document.querySelector('.cta-button').addEventListener('click', (e) => {
+            e.preventDefault();
+            document.querySelector('#projects').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
+
+{% endblock %}

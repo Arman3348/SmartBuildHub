@@ -1,0 +1,209 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Contact Us
+{% endblock %}
+
+{% block activeC %}
+active
+{% endblock %}
+
+{% block main %}
+<!-- Animated Background -->
+<div class="animated-bg">
+    <div class="bg-particle"></div>
+    <div class="bg-particle"></div>
+    <div class="bg-particle"></div>
+    <div class="bg-particle"></div>
+    <div class="bg-particle"></div>
+</div>
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="hero-content">
+            {% if messages %}
+                            {% for m in messages %}
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {{m}}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                            {% endfor %}
+                        {% endif %}
+            <h1 class="hero-title">Contact Smart Build Hub</h1>
+            <p class="hero-subtitle">Let's Build Something Extraordinary Together</p>
+            <p class="hero-description">
+                Have a project in mind, need expert advice, or want to partner with us? Our team is ready to help you
+                turn your vision into reality. Reach out for smart, sustainable, and innovative construction solutions
+                tailored to your needs.
+            </p>
+            <a href="#contact-form" class="cta-button">Get In Touch</a>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Form Section (matching Sign Up style) -->
+<div id="contact-form" class="contact-section position-relative"
+    style="background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80') center center/cover no-repeat; min-height: 80vh; padding: 0; margin-top: 0;">
+    <div class="container-fluid" style="background: transparent; min-height: 80vh;">
+        <div class="row justify-content-center align-items-center"
+            style="min-height: 80vh; background: rgba(24,28,36,0.65); border-radius: 2rem; box-shadow: 0 0 40px #0008;">
+            <div class="col-lg-5 d-flex flex-column align-items-center justify-content-center animate__animated animate__fadeInLeft"
+                style="background: transparent;">
+                <!-- Animated Smart Build Hub SVG/Logo -->
+                <h3
+                    style="background: linear-gradient(45deg, #00d4ff, #9c27b0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700;">
+                    Smart Build Hub</h3>
+                <p class="text-light text-center" style="font-size: 1.1rem; max-width: 400px;">Building the future with
+                    intelligent solutions. Reach out to us for innovative, sustainable, and tech-driven construction
+                    services. Let's create something extraordinary together!</p>
+            </div>
+            <div class="col-lg-5 d-flex flex-column align-items-end justify-content-center animate__animated animate__fadeInRight"
+                style="background: transparent;">
+                <div class="admin-login-content" style="background: transparent; border-radius: 1.5rem; max-width: 420px; width: 100%; margin: 2rem 0; padding: 2rem 1rem;">
+                    <div class="text-center mb-0">
+                        <i class="fas fa-hard-hat fa-2x" style="color: #00d4ff; animation: float 3s ease-in-out infinite;"></i>
+                    </div>
+                    <h2 class="text-center mb-0" style="background: linear-gradient(45deg, #00d4ff, #9c27b0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700; font-size: 1.5rem;">Contact Us</h2>
+                    
+                    <form method="post" autocomplete="off" style="margin-top: 1rem;">
+                        {% csrf_token %}
+                        <div class="mb-2" style="margin-bottom: 0.8rem !important;">
+                            <label for="name" class="form-label" style="color: #00d4ff !important; font-weight: 600; margin-bottom: 0.35rem;">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" required placeholder="Your Name" style="background: rgba(24, 28, 36, 0.85) !important; color: #fff !important; border: none; border-radius: 0.75rem; font-size: 1rem;">
+                        </div>
+                        <div class="mb-2" style="margin-bottom: 0.8rem !important;">
+                            <label for="ContactNo" class="form-label" style="color: #00d4ff !important; font-weight: 600; margin-bottom: 0.35rem;">Contact No</label>
+                            <input type="text" class="form-control" id="ContactNo" name="contactno" required placeholder="Your Contact Number" style="background: rgba(24, 28, 36, 0.85) !important; color: #fff !important; border: none; border-radius: 0.75rem; font-size: 1rem;">
+                        </div>
+                        <div class="mb-2" style="margin-bottom: 0.8rem !important;">
+                            <label for="Email" class="form-label" style="color: #00d4ff !important; font-weight: 600; margin-bottom: 0.35rem;">E-mail</label>
+                            <input type="email" class="form-control" id="Email" name="email" required placeholder="Your Email" style="background: rgba(24, 28, 36, 0.85) !important; color: #fff !important; border: none; border-radius: 0.75rem; font-size: 1rem;">
+                        </div>
+                        <div class="mb-2" style="margin-bottom: 0.8rem !important;">
+                            <label for="subject" class="form-label" style="color: #00d4ff !important; font-weight: 600; margin-bottom: 0.35rem;">Subject</label>
+                            <input type="text" class="form-control" id="Subject" name="subject" required placeholder="Subject" style="background: rgba(24, 28, 36, 0.85) !important; color: #fff !important; border: none; border-radius: 0.75rem; font-size: 1rem;">
+                        </div>
+                        <div class="mb-2" style="margin-bottom: 0.8rem !important;">
+                            <label for="Message" class="form-label" style="color: #00d4ff !important; font-weight: 600; margin-bottom: 0.35rem;">Message</label>
+                            <textarea class="form-control" id="Message" name="message" rows="2" required placeholder="Type your message..." style="background: rgba(24, 28, 36, 0.85) !important; color: #fff !important; border: none; border-radius: 0.75rem; font-size: 1rem;"></textarea>
+                        </div>
+                        <div class="d-grid gap-2 mt-3">
+                            <button type="submit" class="btn btn-primary btn-sm animate__animated animate__pulse animate__infinite">
+                                <i class="fas fa-paper-plane me-2"></i> Send
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"></script>
+<style>
+    @keyframes float {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-12px);
+        }
+    }
+
+    .contact-section .card {
+        min-height: 370px;
+    }
+
+    .contact-section img {
+        min-height: 180px;
+    }
+
+    .contact-section {
+        position: relative;
+        z-index: 1;
+    }
+
+    .contact-section .container-fluid {
+        background: transparent !important;
+    }
+
+    .contact-section .row {
+        background: rgba(24, 28, 36, 0.65);
+        border-radius: 2rem;
+        box-shadow: 0 0 40px #0008;
+    }
+
+    .contact-section .container-fluid,
+    .contact-section .row {
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Admin login style for inputs */
+    .admin-login-content input {
+        background: rgba(24, 28, 36, 0.85) !important;
+        color: #fff !important;
+        border: none;
+        font-size: 1rem;
+    }
+    
+    .admin-login-content input::placeholder {
+        color: #b3e0ff !important;
+        opacity: 1;
+        font-size: 1rem;
+        letter-spacing: 0.5px;
+    }
+    
+    .admin-login-content textarea {
+        background: rgba(24, 28, 36, 0.85) !important;
+        color: #fff !important;
+        border: none;
+        font-size: 1rem;
+    }
+    
+    .admin-login-content textarea::placeholder {
+        color: #b3e0ff !important;
+        opacity: 1;
+        font-size: 1rem;
+        letter-spacing: 0.5px;
+    }
+
+    @media (max-width: 991px) {
+
+        .contact-section .card,
+        .contact-section img {
+            min-height: 120px !important;
+        }
+
+        .contact-section .row {
+            flex-direction: column;
+        }
+
+        .contact-section .col-lg-5 {
+            align-items: center !important;
+        }
+    }
+</style>
+<script>
+    // Fade-in animation for contact section
+    document.addEventListener('DOMContentLoaded', function () {
+        setTimeout(function () {
+            document.querySelector('.contact-section').classList.add('visible');
+        }, 200);
+
+        // Smooth scroll to contact form on CTA click
+        const ctaBtn = document.querySelector('.cta-button');
+        const contactFormSection = document.getElementById('contact-form');
+        if (ctaBtn && contactFormSection) {
+            ctaBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                contactFormSection.scrollIntoView({ behavior: 'smooth' });
+            });
+        }
+    });
+</script>
+{% endblock %}

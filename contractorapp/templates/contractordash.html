@@ -1,0 +1,301 @@
+{% extends 'contractorbase.html' %}
+{% load static %}
+{% block contractor %}
+
+<style>
+    body {
+        background-color: #181c2f;
+    }
+
+    .stat-card {
+        border-left: 4px solid #1d5eeb;
+        background: #23294a;
+        color: #fff;
+        box-shadow: 0 2px 8px rgba(29, 94, 235, 0.08);
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .stat-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(29, 94, 235, 0.15);
+    }
+
+    .stat-value {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #1d5eeb;
+    }
+
+    .action-card {
+        background: #23294a;
+        color: #fff;
+        border: 1px solid #23294a;
+        transition: all 0.2s;
+        cursor: pointer;
+        box-shadow: 0 2px 8px rgba(29, 94, 235, 0.08);
+    }
+
+    .action-card:hover {
+        transform: translateY(-2px);
+        background-color: #1d5eeb;
+        color: #fff;
+        border-color: #1d5eeb;
+    }
+
+    .notification-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+    }
+
+    .dot-new { background-color: #1d5eeb; }
+    .dot-success { background-color: #28a745; }
+    .dot-warning { background-color: #ffc107; }
+
+    .card {
+        background: transparent;
+        color: #fff;
+        border: none;
+    }
+
+    .card-title,
+    .card-header,
+    .card-body,
+    h5,
+    h6,
+    p,
+    small {
+        color: #fff !important;
+    }
+
+    .badge.bg-success {
+        background-color: #28a745 !important;
+        color: #fff;
+    }
+    .badge.bg-warning {
+        background-color: #ffc107 !important;
+        color: #23294a;
+    }
+    .badge.bg-secondary {
+        background-color: #6c757d !important;
+        color: #fff;
+    }
+</style>
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-white">Contractor Dashboard...</h1>
+            <h1 class="h3 text-white" id="greeting"></h1>
+            <p class="text-white">Welcome back,{{name}}! Here’s a quick overview of your projects and activities.</p>
+        </div>
+    </div>
+</div>
+<div class="container-fluid py-4">
+    <!-- Stats Cards -->
+    <div class="row mb-4">
+        <div class="col-md-3 mb-3">
+            <div class="card stat-card h-100">
+                <div class="card-body">
+                    <div class="stat-value">{{tp}}</div>
+                    <h6 class="card-title text-muted mb-0">Total Projects</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card stat-card h-100">
+                <div class="card-body">
+                    <div class="stat-value">{{cp}}</div>
+                    <h6 class="card-title text-muted mb-0">Completed Projects</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card stat-card h-100">
+                <div class="card-body">
+                    <div class="stat-value">{{op}}</div>
+                    <h6 class="card-title text-muted mb-0">Running Projects</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card stat-card h-100">
+                <div class="card-body">
+                    <div class="stat-value">96%</div>
+                    <h6 class="card-title text-muted mb-0">Client Satisfaction</h6>
+                    <small class="text-success">↑ 2% improvement</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="row">
+        <!-- Recent Projects -->
+        <div class="col-lg-8 mb-4">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Recent Projects</h5>
+                    <a href="#" class="btn btn-primary btn-sm">View All</a>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="border-start border-primary border-3 ps-3">
+                                <h6 class="mb-1">Downtown Office Renovation</h6>
+                                <p class="text-white small mb-1">Johnson & Associates</p>
+                                <span class="badge bg-success">In Progress</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="border-start border-warning border-3 ps-3">
+                                <h6 class="mb-1">Kitchen Remodel</h6>
+                                <p class="text-white small mb-1">Smith Family</p>
+                                <span class="badge bg-warning">Planning</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="border-start border-primary border-3 ps-3">
+                                <h6 class="mb-1">Commercial Flooring</h6>
+                                <p class="text-white small mb-1">TechCorp HQ</p>
+                                <span class="badge bg-success">In Progress</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="border-start border-secondary border-3 ps-3">
+                                <h6 class="mb-1">Bathroom Modernization</h6>
+                                <p class="text-white small mb-1">Anderson Home</p>
+                                <span class="badge bg-secondary">Completed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notifications -->
+        <div class="col-lg-4 mb-4">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Recent Updates</h5>
+                    <button class="btn btn-outline-secondary btn-sm text-white">Mark All Read</button>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex align-items-start mb-3">
+                        <div class="notification-dot dot-new me-3 mt-2"></div>
+                        <div class="flex-grow-1">
+                            <p class="mb-1 small">New project proposal submitted</p>
+                            <small class="text-white">2 hours ago</small>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start mb-3">
+                        <div class="notification-dot dot-success me-3 mt-2"></div>
+                        <div class="flex-grow-1">
+                            <p class="mb-1 small">Payment received - $25,000</p>
+                            <small class="text-white">4 hours ago</small>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start mb-3">
+                        <div class="notification-dot dot-warning me-3 mt-2"></div>
+                        <div class="flex-grow-1">
+                            <p class="mb-1 small">Material delivery delayed</p>
+                            <small class="text-white">6 hours ago</small>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start">
+                        <div class="notification-dot dot-new me-3 mt-2"></div>
+                        <div class="flex-grow-1">
+                            <p class="mb-1 small">New client inquiry received</p>
+                            <small class="text-white">1 day ago</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="row">
+        <div class="col-12">
+            <h5 class="mb-3">Quick Actions</h5>
+        </div>
+        <div class="col-md-2 col-sm-4 col-6 mb-3">
+            <div class="card action-card text-center">
+                <div class="card-body py-3">
+                    <div class="fs-2 mb-2">📋</div>
+                    <h6 class="card-title small">New Project</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 col-sm-4 col-6 mb-3">
+            <div class="card action-card text-center">
+                <div class="card-body py-3">
+                    <div class="fs-2 mb-2">👥</div>
+                    <h6 class="card-title small">Add Client</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 col-sm-4 col-6 mb-3">
+            <div class="card action-card text-center">
+                <div class="card-body py-3">
+                    <div class="fs-2 mb-2">💰</div>
+                    <h6 class="card-title small">Invoice</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 col-sm-4 col-6 mb-3">
+            <div class="card action-card text-center">
+                <div class="card-body py-3">
+                    <div class="fs-2 mb-2">📊</div>
+                    <h6 class="card-title small">Reports</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 col-sm-4 col-6 mb-3">
+            <div class="card action-card text-center">
+                <div class="card-body py-3">
+                    <div class="fs-2 mb-2">🔧</div>
+                    <h6 class="card-title small">Resources</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 col-sm-4 col-6 mb-3">
+            <div class="card action-card text-center">
+                <div class="card-body py-3">
+                    <div class="fs-2 mb-2">📅</div>
+                    <h6 class="card-title small">Schedule</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const greeting = document.getElementById('greeting');
+    const currentHour = new Date().getHours();
+    if (currentHour < 12) {
+        greeting.textContent = 'Good Morning !🌞 {{name}} ';
+    } else if (currentHour < 17) {
+        greeting.textContent = 'Good Afternoon !🌤️ {{name}}';
+    } else {
+        greeting.textContent = 'Good Evening !🌙 {{name}}';
+    }
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Add click handlers for action cards
+        document.querySelectorAll('.action-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const action = this.querySelector('.card-title').textContent;
+                Swal.fire({
+                    title: action,
+                    text: 'This feature will be implemented soon!',
+                    icon: 'info',
+                    confirmButtonText: 'OK'
+                });
+            });
+        });
+    });
+</script>
+
+{% endblock %}

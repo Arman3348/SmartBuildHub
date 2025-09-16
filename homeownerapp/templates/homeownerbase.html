@@ -1,0 +1,310 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>
+        {% block title %}
+        Homeowner Dashboard
+        {% endblock %}
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- [Favicon] -->
+    <link rel="icon" href="" type="image/x-icon">
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="{% static 'admin/assets/css/plugins/dataTables.bootstrap5.min.css' %}">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="{% static 'admin/assets/fonts/tabler-icons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/assets/fonts/feather.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/assets/fonts/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/assets/fonts/material.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/assets/css/style-preset.css' %}">
+
+    <style>
+        /* Dark Theme Colors */
+        body,
+        .pc-container {
+            background: #0b0f1a !important;
+            color: white;
+        }
+
+        .pc-sidebar {
+            background: #0b0f1a !important;
+        }
+
+        .pc-sidebar .pc-link {
+            color: white !important;
+        }
+
+        .pc-sidebar .pc-caption label {
+            color: #87CEEB;
+        }
+
+        .header-wrapper {
+            background: #0b0f1a !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header-search input {
+            background: white;
+            color: #141a2a;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .pc-h-dropdown {
+            background: #141a2a !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5) !important;
+        }
+
+        .dropdown-item {
+            color: white !important;
+            background: transparent !important;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(135, 206, 235, 0.1) !important;
+            color: #87CEEB !important;
+        }
+
+        .header-user-profile {
+            position: relative;
+        }
+
+        .header-user-profile .dropdown-menu {
+            position: absolute !important;
+            right: 0 !important;
+            left: auto !important;
+            transform: none !important;
+        }
+    </style>
+</head>
+
+<body data-pc-preset="preset-1" data-pc-direction="ltr" data-pc-theme="dark">
+
+    <!-- Loader -->
+    <div class="loader-bg">
+        <div class="loader-track">
+            <div class="loader-fill"></div>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <nav class="pc-sidebar">
+        <div class="navbar-wrapper">
+            <div class="m-header text-center py-3">
+                <a href="{% url 'index' %}" class="text-white fw-bold fs-4">SmartBuildHub</a>
+            </div>
+            <div class="navbar-content">
+                <ul class="pc-navbar">
+                    <li class="pc-item">
+                        <a href="{% url 'homeownerdash' %}" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-dashboard text-sky"></i></span>
+                            <span class="text-sky">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="pc-item pc-caption">
+                        <label class="text-sky">Manage</label>
+                        <i class="ti ti-dashboard text-sky"></i>
+                    </li>
+                    <li class="pc-item pc-hasmenu">
+                        <a href="{% url 'homeownerprofile' %}" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-eye text-sky"></i></span>
+                            <span class="text-sky">View Profile</span>
+                        </a>
+                    </li>
+                    <li class="pc-item pc-hasmenu">
+                        <a href="{% url 'homeowneredit' %}" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-pencil text-sky"></i></span>
+                            <span class="text-sky">Edit Profile</span>
+                        </a>
+                    </li>
+                    <li class="pc-item pc-hasmenu dropdown">
+                        <a class="pc-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="pc-micon"><i class="ti ti-folder text-sky"></i></span>
+                            <span class="text-sky">Projects</span>
+                        </a>
+                        <ul class="dropdown-menu pc-h-dropdown">
+                            <li><a href="{% url 'addproject' %}" class="dropdown-item"><i class="ti ti-plus text-sky me-2"></i> Add
+                                    Projects</a></li>
+                            <li><a href="{% url 'homeownerviewprojects' %}" class="dropdown-item"><i class="ti ti-eye text-sky me-2"></i> View
+                                    Projects</a></li>
+                            <li><a href="{% url 'runningprojects' %}" class="dropdown-item"><i class="ti ti-run text-sky me-2"></i> Running
+                                    Projects</a></li>
+                        </ul>
+                    </li>
+                    <li class="pc-item pc-hasmenu">
+                        <a href="{% url 'homeownercompletedprojects' %}" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-check text-sky"></i></span>
+                            <span class="text-sky">Completed Projects</span>
+                        </a>
+                    </li>
+                    <li class="pc-item pc-caption">
+                        <label class="text-sky">Actions</label>
+                        <i class="ti ti-news text-sky"></i>
+                    </li>
+                    <li class="pc-item">
+                        <a href="{% url 'changepassword' %}" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-lock text-sky"></i></span>
+                            <span class="text-sky">Change Password</span>
+                        </a>
+                    </li>
+
+                    <li class="pc-item">
+                        <a href="{% url 'homeowner_logout' %}" class="pc-link">
+                            <span class="pc-micon"><i class="ti ti-power text-sky"></i></span>
+                            <span class="text-sky">Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="pc-header">
+        <div class="header-wrapper text-white d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center">
+                <a href="#" class="pc-head-link text-white me-3" id="sidebar-hide" aria-label="Toggle sidebar">
+                    <i class="ti ti-menu-2 text-white"></i>
+                </a>
+                <div class="header-search d-none d-md-flex align-items-center" style="width: 250px;">
+                    <i class="ti ti-search text-sky me-2"></i>
+                    <input type="search" class="form-control form-control-sm" placeholder="Search here..."
+                        style="font-size: 14px;">
+                </div>
+            </div>
+            <div>
+                <ul class="list-unstyled mb-0 d-flex align-items-center">
+                    <li class="dropdown pc-h-item header-user-profile">
+                        <a class="pc-head-link dropdown-toggle text-sky d-flex align-items-center"
+                            data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"
+                            style="background: transparent !important;">
+                            <div class="text-center mb-4">
+                                {% if profile %}
+                                <img src="{{ profile.url }}" alt="Profile Picture"
+                                    class="rounded-circle img-fluid mt-4 mx-2"
+                                    style="width: 30px; height: 30px; object-fit: cover;">
+                                {% else %}
+                                <div class="rounded-circle mx-auto d-flex align-items-center justify-content-center"
+                                    style="width: 35px; height: 35px; background-color: #6c757d; border: 3px solid #fff;">
+                                    <i class="fas fa-user fa-3x text-white"></i>
+                                </div>
+                                {% endif %}
+                            </div>
+                            <span class="text-white">{{name}}</span>
+                        </a>
+                        <div class="dropdown-menu pc-h-dropdown" style="min-width: 200px; right: 0; left: auto;">
+                            <div class="dropdown-header"
+                                style="padding: 1rem; background: #1a1f2e; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                                <div class="d-flex mb-1 px-3 align-items-center">
+                                    {% if profile %}
+                                    <img src="{{ profile.url }}" alt="Profile Picture"
+                                        class="rounded-circle img-fluid mt-1 me-3 "
+                                        style="width: 45px; height: 45px; object-fit: cover;">
+                                    {% else %}
+                                    <div class="rounded-circle mx-auto d-flex align-items-center justify-content-center"
+                                        style="width: 35px; height: 35px; background-color: #6c757d; border: 3px solid #fff;">
+                                        <i class="fas fa-user fa-3x text-white"></i>
+                                    </div>
+                                    {% endif %}
+                                    <div class="me-3">
+                                        <h6 class="mb-1 text-white">{{name}}
+                                        </h6>
+                                        <span class="text-white">{{email}}</span>
+                                    </div>
+                                    <a href="{% url 'homeowner_logout' %}" class="pc-head-link bg-transparent me-3"><i
+                                            class="ti ti-power text-danger"></i></a>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="dropdown-divider" style="border-color: rgba(255, 255, 255, 0.1);"></div>
+                            <a href="{% url 'homeowneredit' %}" class="dropdown-item" style="padding: 0.5rem 1rem;"><i
+                                    class="ti ti-edit text-sky me-2"></i> Update Profile</a>
+                            <a href="{% url 'changepassword' %}" class="dropdown-item" style="padding: 0.5rem 1rem;"><i
+                                    class="ti ti-lock text-sky me-2"></i>Change Password</a>
+                            <a href="{% url 'homeowner_logout' %}" class="dropdown-item"
+                                style="padding: 0.5rem 1rem;"><i class="ti ti-power text-sky me-2"></i> Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="pc-container">
+        <div class="pc-content">
+            <div class="container-fluid py-4">
+                {% block homeowner %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="pc-footer bg-dark border-top border-secondary">
+        <div class="footer-wrapper container-fluid text-center">
+            <p class="m-0 text-white">© 2025 SmartBuildHub : Developed by <a
+                    href="https://www.linkedin.com/in/farman-alam-3b9a99244/" target="_blank"
+                    style="color:#87CEEB;">Farman Alam</a></p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="{% static 'admin/assets/js/plugins/popper.min.js' %}"></script>
+    <script src="{% static 'admin/assets/js/plugins/bootstrap.min.js' %}"></script>
+    <script src="{% static 'admin/assets/js/plugins/simplebar.min.js' %}"></script>
+    <script src="{% static 'admin/assets/js/pcoded.js' %}"></script>
+    <script>
+        document.getElementById("sidebar-hide").addEventListener("click", function (e) {
+            e.preventDefault();
+            const sidebar = document.querySelector(".pc-sidebar");
+            const container = document.querySelector(".pc-container");
+            const header = document.querySelector(".pc-header");
+
+            sidebar.classList.toggle("pc-sidebar-hide");
+            container.classList.toggle("pc-sidebar-hide");
+            header.classList.toggle("pc-sidebar-hide");
+        });
+
+        // Ensure dropdown functionality works
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize Bootstrap dropdowns
+            var dropdownElementList = [].slice.call(document.querySelectorAll('[data-bs-toggle="dropdown"]'));
+            var dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
+                return new bootstrap.Dropdown(dropdownToggleEl);
+            });
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {% if messages %}
+    {% for message in messages %}
+    <script>
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer);
+                toast.addEventListener('mouseleave', Swal.resumeTimer);
+            }
+        });
+        Toast.fire({
+            icon: '{{ message.tags }}',
+            title: '{{ message|escapejs }}'
+        });
+    </script>
+    {% endfor %}
+    {% endif %}
+</body>
+
+</html>
