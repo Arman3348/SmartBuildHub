@@ -1,9 +1,5 @@
-Django==5.1.7
-asgiref==3.8.1
-psycopg2-binary==2.9.10          # For PostgreSQL database support
-sqlparse==0.5.3                  # Used internally by Django
-tzdata==2025.1                   # Time zone data
-whitenoise==6.9.0                # For serving static files efficiently in production
-gunicorn==21.2.0                 # A production WSGI server for Unix
-dj-database-url==2.1.0           # To parse database configuration URLs (optional, recommended for production)
-python-dotenv==1.0.1             # To manage environment variables from .env files
+Django>=3.2,<5
+gunicorn
+dj-database-url
+whitenoise
+psycopg2-binary
